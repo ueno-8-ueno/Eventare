@@ -15,3 +15,9 @@
 
 <h4>投稿ユーザー</h4>
 <%= @event.user.name %>
+
+<div>
+  <% if @event.user == current_user %>
+    <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</div>
