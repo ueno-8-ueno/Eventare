@@ -1,2 +1,11 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>みんなのイベントTODO</h1>
+
+<table>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.user.name %></td>
+      <td><%= event.name %></td>
+      <td><%= event.start_at %> ~ <%= event.end_at %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,2 +1,27 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+
+<div class="box">
+  <div class="box-inner">
+    <h1>イベントTODO作成/投稿フォーム</h1>
+
+    <%= form_with model: @event do |f| %>
+      <h4>イベント名</h4>
+      <%= f.text_field :name, autofocus: true %>
+
+      <h4>イベント詳細</h4>
+      <%= f.text_area :introduction, autofocus: true %>
+
+      <h4>イベントのジャンル<br>
+      (漫画・小説・音楽など)</h4>
+      <%= f.text_field :genre, autofocus: true %>
+
+      <h4>イベント開始日時</h4>
+      <%= f.date_field :start_at %>
+
+      <h4>イベント開始日時</h4>
+      <%= f.date_field :end_at %><br>
+
+
+      <%= f.submit "TODOを作成/投稿する" %>
+    <% end %>
+  </div>
+</div>
