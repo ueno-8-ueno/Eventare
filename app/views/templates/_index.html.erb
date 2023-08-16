@@ -1,0 +1,9 @@
+<table>
+  <% events.each do |event| %>
+    <tr>
+      <td><%= event.user.name %></td>
+      <td><%= event.name %></td>
+      <td><%= event.start_at %> ~ <%= event.end_at %></td>
+    </tr>
+  <% end %>
+</table>
