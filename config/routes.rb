@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about'
 
-  resources :events, only: [:new, :create, :index, :show, :destroy]
+  resources :events, only: [:new, :create, :index, :show, :destroy, :edit, :update]
 
   resources :users, only: [:show, :edit, :update]
 
