@@ -1,2 +1,22 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="box">
+  <div class="box-inner">
+    <h1>プロフィール編集</h1>
+    <%= form_with model: @user do |f| %>
+      <div>
+        <label for="inputName">ユーザーネーム</label><br>
+        <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+      </div>
+      <div>
+        <label for="inputName">自己紹介</label><br>
+        <%= f.text_area :introduction, autofocus: true, placeholder:"自己紹介"%>
+      </div>
+      <div>
+        <label for="inputImage">プロフィール画像</label><br>
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+      </div>
+      <div>
+        <%= f.submit "変更を保存" %>
+      </div>
+    <% end %>
+  </div>
+</div>
