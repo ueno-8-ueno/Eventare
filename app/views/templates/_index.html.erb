@@ -1,8 +1,13 @@
 <table>
   <% events.each do |event| %>
     <tr>
-      <td><%= event.user.name %></td>
-      <td><%= event.name %></td>
+      <td>
+        <%= link_to user_path(event.user.id) do %>
+          <%= image_tag event.user.get_profile_image(100,100) %>
+          <%= event.user.name %>
+        <% end %>
+      </td>
+      <td><%= link_to event.name, event_path(event.id) %></td>
       <td><%= event.start_at %> ~ <%= event.end_at %></td>
     </tr>
   <% end %>

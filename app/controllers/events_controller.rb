@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     @event.save
-    redirect_to events_path
+    redirect_to user_path(current_user)
   end
 
   def index
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to events_path
+    redirect_to user_path(current_user)
   end
 
 
