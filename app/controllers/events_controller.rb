@@ -6,8 +6,12 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
-    @event.save
-    redirect_to user_path(current_user)
+    if @event.save
+      flash[:notice] = "投稿が成功しました"
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def index
@@ -21,6 +25,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
+    flash[:notice] = "イベントTODOが削除されました"
     redirect_to user_path(current_user)
   end
 
@@ -29,16 +34,16 @@ class EventsController < ApplicationController
   end
 
   def update
-     event = Event.find(params[:id])
+    @event = Event.find(params[:id])
 
-     if event.user != current_user
+    if @event.user != current_user
       redirect_to user_path(current_user.id)
       return
     end
 
-    if event.update(event_params)
-      flash[:notice] = "編集内容がが反映されました"
-      redirect_to event_path(event.id)
+    if @event.update(event_params)
+      flash[:notice] = "編集内容が反映されました"
+      redirect_to event_path(@event.id)
     else
       render :edit
     end

@@ -1,7 +1,9 @@
+<!--バリデーションエラー部-->
+<%= render "templates/validation", event: @event %>
 
 <div class="box">
   <div class="box-inner">
-    <h1>イベントTODO作成/投稿フォーム</h1>
+    <h1>イベントTODO投稿</h1>
 
     <%= form_with model: @event do |f| %>
       <h4>イベント名</h4>
@@ -10,9 +12,8 @@
       <h4>イベント詳細</h4>
       <%= f.text_area :introduction, autofocus: true %>
 
-      <h4>イベントのジャンル<br>
-      (漫画・小説・音楽など)</h4>
-      <%= f.text_field :genre, autofocus: true %>
+      <h4>イベントのジャンル</h4>
+      <%= f.select :genre, {'音楽':'音楽', '小説':'小説', '漫画':'漫画', 'イラスト':'イラスト', 'ものつくり':'ものつくり', 'その他':'その他'}, { include_blank: '選択してください'} %>
 
       <h4>イベント開始日時</h4>
       <%= f.date_field :start_at %>
@@ -21,7 +22,7 @@
       <%= f.date_field :end_at %><br>
 
 
-      <%= f.submit "TODOを作成/投稿する" %>
+      <%= f.submit "投稿する" %>
     <% end %>
   </div>
 </div>
