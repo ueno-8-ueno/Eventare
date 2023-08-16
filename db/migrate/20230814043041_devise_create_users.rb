@@ -35,6 +35,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # ユーザ名のカラム
       t.string :name
 
+      # 紹介文のカラム
+      t.text :introduction
+
       t.timestamps null: false
     end
 
