@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.page(params[:page]) # ページネーション
   end
 
   def show
