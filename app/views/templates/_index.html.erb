@@ -1,5 +1,5 @@
 <table>
-  <% events.each do |event| %>
+  <% events.reverse_each do |event| %>
     <tr>
       <td>
         <%= link_to user_path(event.user.id) do %>
