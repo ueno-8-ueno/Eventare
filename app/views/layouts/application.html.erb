@@ -2,41 +2,86 @@
 <html>
   <head>
     <title>EventTodoBorad</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <script src="https://kit.fontawesome.com/64316cd30c.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？" %>
-        </li>
-        <li>
-          <%= link_to 'マイページ', user_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to '投稿フォーム', new_event_path %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-      <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <%= link_to root_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-house"></i> イベントTODO掲示板(仮)
+          <% end %>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to new_event_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i> 投稿フォーム
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to events_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-globe"></i> みんなのTODO
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
+                  <i class="fas fa-user" aria-hidden="true"></i> マイページ
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link text-dark' do %>
+                  <i class="fas fa-sign-out-alt" aria-hidden="true"></i> ログアウト
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to homes_about_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-link" aria-hidden="true"></i> 概要
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-user-plus" aria-hidden="true"></i> 新規登録
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ログイン
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main>
-      <p class="notice"><%= notice %></p>
+    <p class="notice"><%= notice %></p>
 
-      <%= yield %>
-    </main>
+    <%= yield %>
+
+    <footer>
+      <div class="bg-dark text-white mt-5 pt-4">
+        <div class="container">
+          <div class="row mx-auto">
+            <p>©2023 event todo borad</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
