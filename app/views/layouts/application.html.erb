@@ -12,76 +12,81 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <%= link_to root_path, class: 'nav-link text-dark' do %>
-            <i class="fa-solid fa-house"></i> イベントTODO掲示板(仮)
-          <% end %>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to new_event_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-plus" aria-hidden="true"></i> 投稿フォーム
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to events_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-globe"></i> みんなのTODO
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
-                  <i class="fas fa-user" aria-hidden="true"></i> マイページ
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link text-dark' do %>
-                  <i class="fas fa-sign-out-alt" aria-hidden="true"></i> ログアウト
-                <% end %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to homes_about_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-link" aria-hidden="true"></i> 概要
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-user-plus" aria-hidden="true"></i> 新規登録
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ログイン
-                <% end %>
-              </li>
+    <div class="fixed-top bg-white">
+      <header class="shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <%= link_to root_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-house"></i> イベントTODO掲示板(仮)
             <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to new_event_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i> 投稿フォーム
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to events_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-globe"></i> みんなのTODO
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
+                    <i class="fas fa-user" aria-hidden="true"></i> マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link text-dark' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to homes_about_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-link" aria-hidden="true"></i> 概要
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-user-plus" aria-hidden="true"></i> 新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ログイン
+                  <% end %>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
+
+    <div class="pt-5 pb-5">
     <p class="notice"><%= notice %></p>
-
     <%= yield %>
+    </div>
 
-    <footer>
-      <div class="bg-dark text-white mt-5 pt-4">
-        <div class="container">
-          <div class="row mx-auto">
-            <p>©2023 event todo borad</p>
+    <div class="fixed-bottom">
+      <footer class="mt-5">
+        <div class="bg-dark text-white mt-5 pt-4">
+          <div class="container">
+            <div class="row mx-auto">
+              <p>©2023 event todo borad</p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
   </body>
 </html>

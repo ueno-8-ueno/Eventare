@@ -1,15 +1,24 @@
-<table>
+<div class="card-list-container py-5">
   <% events.reverse_each do |event| %>
-    <tr>
-      <td>
-        <%= link_to user_path(event.user.id) do %>
-          <%= image_tag event.user.get_profile_image(100,100) %>
-          <%= event.user.name %>
-        <% end %>
-      </td>
-      <td><%= link_to event.name, event_path(event.id) %></td>
-      <td><%= event.start_at %> ~ <%= event.end_at %></td>
-    </tr>
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <%= link_to(user_path(event.user), class:"text-dark") do %>
+              <%= image_tag event.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+              <span><i class="fa-solid fa-user"></i> <%= event.user.name %></span>
+            <% end %>
+          </div>
+          <div class="col-10">
+            <%= link_to(event_path(event.id), class:"text-dark") do %>
+              <p class="card-title"> <strong><i class="far fa-flag"></i><span> <%= event.name %></span></strong></p>
+              <p class="card-text"><i class="fa-solid fa-tablet"></i> <%= event.genre %></p>
+              <p class="card-text"><i class="fa-regular fa-clock"></i> <%= event.start_at %> ~ <%= event.end_at %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</table>
-<%= paginate events %>
+  <%= paginate events %>
+</div>
