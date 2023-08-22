@@ -4,7 +4,7 @@
       <h5 class="text-dark bg-light p-4 mb-0"><i class="fa-solid fa-plus"></i> イベントTODO投稿</h5>
       <div class="form-body p-4">
         <!--バリデーションエラー部-->
-        <%= render "templates/validation", event: @event %>
+        <%= render "templates/validation", obj: @event %>
         <!--投稿フォーム部-->
         <%= render "form", event: @event %>
       </div>

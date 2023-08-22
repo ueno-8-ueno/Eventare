@@ -1,22 +1,30 @@
-<div class="box">
-  <div class="box-inner">
-    <h1>プロフィール編集</h1>
-    <%= form_with model: @user do |f| %>
-      <div>
-        <label for="inputName">ユーザーネーム</label><br>
-        <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0"><i class="fa-solid fa-gear"></i> プロフィール編集</h5>
+      <div class="form-body p-4">
+        <!--バリデーションエラー部-->
+        <%= render "templates/validation", obj: @user %>
+
+        <%= form_with model: @user do |f| %>
+          <div class="mb-3">
+            <h5><i class="fa-solid fa-user"></i> ユーザーネーム</h5>
+            <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+          </div>
+
+          <div class="mb-3">
+            <h5><i class="fa-solid fa-pen-fancy"></i> 自己紹介</h5>
+            <%= f.text_area :introduction, autofocus: true, placeholder:"自己紹介"%>
+          </div>
+
+          <div class="mb-3">
+            <h5><i class="fa-solid fa-image"></i> プロフィール画像</h5>
+            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+          </div>
+
+          <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
       </div>
-      <div>
-        <label for="inputName">自己紹介</label><br>
-        <%= f.text_area :introduction, autofocus: true, placeholder:"自己紹介"%>
-      </div>
-      <div>
-        <label for="inputImage">プロフィール画像</label><br>
-        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-      </div>
-      <div>
-        <%= f.submit "変更を保存" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
