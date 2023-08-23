@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def new
     @event = Event.new
   end
@@ -52,8 +54,17 @@ class EventsController < ApplicationController
 
   private
 
+  # ストロングパラメータ
   def event_params
     params.require(:event).permit(:name, :introduction, :genre, :start_at, :end_at)
+  end
+
+  # TODO編集画面へのアクセス制御
+  def is_matching_login_user
+    user = Event.find(params[:id]).user
+    unless user.id == current_user.id
+      redirect_to events_path
+    end
   end
 
 end
