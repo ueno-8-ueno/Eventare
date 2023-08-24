@@ -71,8 +71,13 @@
       </header>
     </div>
 
-    <div class="pt-5 pb-5">
-      <p class="notice pt-2"><%= notice %></p>
+    <div class="pt-3 pb-5">
+      <div class="container mt-5">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-success"><%= message %></div>
+        <% end %>
+      </div>
+      
       <%= yield %>
     </div>
 
