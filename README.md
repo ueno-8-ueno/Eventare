@@ -1,24 +1,12 @@
-# README
+# Eventare
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 概要
+創作者向けに作った, TODOを他人と共有できるwebアプリであり, 創作イベントなどのTODO作成および共有が可能です.
+当初はCRUD処理のみでしたが, いずれ検索機能などの機能拡張も考えています(2023/08 時点).
 
-Things you may want to cover:
+# 使用技術
+## フロントエンド
+- Bootstrap
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## バックエンド
+- Ruby on Rails (Ruby)
