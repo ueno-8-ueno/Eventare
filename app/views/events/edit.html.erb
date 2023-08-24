@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <h5 class="text-dark bg-light p-4 mb-0"><i class="fa-solid fa-gear"></i> イベントTODO編集</h5>
+      <div class="text-dark bg-light p-4 mb-0">
+        <div class="text-right">
+          <%= link_to event_path(@event), class:"btn btn-outline-secondary btn-sm mb-2" do %>
+            <i class="fa-solid fa-arrow-left"></i> 戻る
+          <% end %>
+        </div>
+        <h5 class="text-center"><i class="fa-solid fa-gear"></i> イベントTODO編集</h5>
+      </div>
       <div class="form-body p-4">
         <!--バリデーションエラー部-->
         <%= render "templates/validation", obj: @event %>
