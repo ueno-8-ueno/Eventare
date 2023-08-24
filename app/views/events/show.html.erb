@@ -1,24 +1,44 @@
-<h1>イベントTODO詳細</h1>
+<div class="container">
+  <h4 class="p-3 border-bottom text-center">イベントTODO詳細</h4>
+  <div class="row mt-5 mb-5">
+    <div class="col-4">
+      <div class="pt-4 pl-5">
+        <h6><i class="fa-solid fa-user"></i> 投稿ユーザー</h6>
+        <%= link_to(user_path(@event.user), class:"text-dark") do %>
+          <%= image_tag @event.user.get_profile_image(150,150), class:"mt-3"; %>
+          <p class="h5"><%= @event.user.name %></p>
+        <% end %>
+      </div>
+    </div>
 
+    <div class="col-8">
+      <div class="p-3 w-75">
+        <h6 class="border-bottom"><i class="far fa-flag"></i> イベント名:</h6>
+        <p class="h5"><%= @event.name %></p>
+      </div>
 
-<h4>イベント名</h4>
-<%= @event.name %>
+      <div class="p-3 w-75">
+        <h6 class="border-bottom"><i class="fa-regular fa-clock"></i> イベント開催日程:</h6>
+        <p class="h5"><%= @event.start_at %> ~ <%= @event.end_at %></p>
+      </div>
 
-<h4>イベント開催日程</h4>
-<%= @event.start_at %> ~ <%= @event.end_at %>
+      <div class="p-3 w-75">
+        <h6 class="border-bottom"><i class="fa-solid fa-pen-fancy"></i> イベント詳細:</h6>
+        <p class="h5"><%= @event.introduction %></p>
+      </div>
 
-<h4>イベント詳細</h4>
-<%= @event.introduction %>
+      <div class="p-3 w-75">
+        <h6 class="border-bottom"><i class="fa-solid fa-tag"></i> ジャンル:</h6>
+        <p class="h5"><%= @event.genre %></p>
+      </div>
 
-<h4>ジャンル</h4>
-<%= @event.genre %>
+        <div class="p-3 w-75 text-right">
+          <% if @event.user == current_user %>
+            <%= link_to "編集", edit_event_path(@event), class:"btn btn-secondary mr-3" %>
+            <%= link_to "削除", event_path(@event), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <% end %>
+        </div>
+    </div>
 
-<h4>投稿ユーザー</h4>
-<%= @event.user.name %>
-
-<div>
-  <% if @event.user == current_user %>
-    <%= link_to "編集", edit_event_path(@event) %>
-    <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <% end %>
+  </div>
 </div>
